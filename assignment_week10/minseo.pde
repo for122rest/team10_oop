@@ -19,6 +19,7 @@ class minseo extends charac {
     dd = sqrt((x-a.x)*(x-a.x) + (y-a.y)*(y-a.y));
     if (dd < (5*d + 10*a.d)) {
       isVisible = false;
+      a.isVisible = false;
     }
   }
 
