@@ -10,8 +10,7 @@ class yong extends charac {
     float dd;
     dd = sqrt((x-a.x)*(x-a.x) + (y-a.y)*(y-a.y));
     if (dd < (5*d + 5*a.d)) {
-      isVisible = false;
-      a.isVisible = false;
+      d += 0.1;
     }
   }
 
