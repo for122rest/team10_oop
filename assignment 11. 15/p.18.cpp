@@ -1,10 +1,11 @@
 #include <iostream>
 using namespace std;
-class a {
+class a
+{
 public:
 	a() { i++; aa = NULL; cout << i << " con\n"; }
 	~a();
-	float x, y, * aa, cc;
+	float x, y, * aa;
 	static int i;
 };
 int a::i = 0;
@@ -17,6 +18,7 @@ a::~a() {
 	else { cout << i << " none \n"; }
 	i--;
 }
+
 void foo() {
 	cout << " foo ";
 	a d;
@@ -24,12 +26,6 @@ void foo() {
 	d.~a();      cout << " foo ";
 }
 
-void hi() {
-	cout << "hi";
-	a c;
-	c.aa = new float[123]; cout << "hi";
-	c.~a();  cout << "hi";
-}
 void main() {
 	cout << " Main ";
 	a b;
@@ -42,5 +38,16 @@ void main() {
 	b.~a();  // cout done
 	b.aa = NULL;
 	cout << " Main " << b.x << "\n";
-	foo(); hi();    cout << " Main ";
+	cout << "Main ";
+	a cc;
+	cc.y = 30; cout << " Main ";
+	cc.~a();
+	cc.aa = new float[123];
+	cc.aa[10] = 50;  cout << "Main ";
+	cout << cc.y << "  ";
+	cout << cc.aa[10] << endl;    cout << " Main ";
+	cc.~a();
+	cc.aa = NULL;
+	cout << " Main " << cc.y << "\n";
+	foo();    cout << " Main ";
 }
