@@ -1,13 +1,12 @@
 #pragma once
-#include <fstream>
 #include <iostream>
-#include <string>
+#include <fstream>
 using namespace std;
 
 class LOL {
 public:
 	LOL();
-	LOL(int N1, int N2, float a, float b, float x0, float dx, const string& fileName);
+	LOL(int A, int B, float C, float D, float E, float F, int G, string ss);
 	~LOL();
 
 	void f1();
@@ -17,6 +16,7 @@ private:
 	int N1, N2, m;
 	float a, b, x0, dx;
 	ofstream f;
+	string fileName;
 	int* f1d;
 	float* f2d;
 };
