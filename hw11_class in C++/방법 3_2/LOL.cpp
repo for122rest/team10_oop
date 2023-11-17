@@ -1,21 +1,49 @@
-#include <fstream>
 #include "LOL.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
 
-int main() {
-	LOL cha1(5, 10, 2, 3, -5, 0.1, 10, "alkali.dat");
-	LOL cha2(7, 100, -3.5, 4, 100, 10, 15, "amumu.dat");
-	LOL cha3(12, 17, 0.01, 0.2, 1.5, 0.08, 20, "annie.dat");
-	LOL cha4(10, 20, 4.2, -5.3, 2.1, 0.2, 5, "ashe.dat");
+//constructor
+LOL::LOL() { };
+LOL::LOL(int A, int B, float C, float D, float E, float F, int G, string ss) {
+	N1 = A;	N2 = B;	a = C;	b = D;	x0 = E;	dx = F;	m = G;	fileName = ss;
+	f.open(fileName, ios::binary | ios::out);
+	f.write((char*)&N1, sizeof(int));
+	f.write((char*)&N2, sizeof(int));
+	f.write((char*)&a, sizeof(float));
+	f.write((char*)&a, sizeof(float));
+	f.write((char*)&b, sizeof(float));
+	f.write((char*)&dx, sizeof(float));
+	f.write((char*)&m, sizeof(int));
 
-	cha1.f1();
-	cha1.f2();
-	cha2.f1();
-	cha2.f2();
-	cha3.f1();
-	cha3.f2();
-	cha4.f1();
-	cha4.f2();
-	return 10;
+}
+
+//destructor
+LOL::~LOL() {
+	delete[] f1d;
+	delete[] f2d;
+	if (f.is_open()) {
+		f.close();
+	}
+	cout << "delete success\n";
+}
+
+
+//member function
+void LOL::f1() {
+	f1d = new int[N2 - N1 + 1];
+	for (int i = N1; i <= N2; i++) {
+		f1d[i - N1] = i * (i + 1) / 2;
+	}
+	f.write((char*)f1d, sizeof(int) * (N2 - N1 + 1));
+}
+
+void LOL::f2() {
+	float x;
+	x = x0;
+	f2d = new float[m];
+	for (int i = 0; i < m; i++, x += dx) {
+		f2d[i] = a * x + b;
+	}
+	f.write((char*)f2d, sizeof(int) * m);
 }
