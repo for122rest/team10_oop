@@ -16,9 +16,9 @@ int main() {
 
     Car C = A + B;
 
-    std::cout << "A mileage: " << A.abc << std::endl;
-    std::cout << "B mileage: " << B.abc << std::endl;
-    std::cout << "C mileage (A + B): " << C.abc << std::endl;
+    std::cout << "A: " << A.abc << std::endl;
+    std::cout << "B: " << B.abc << std::endl;
+    std::cout << "C(A + B): " << C.abc << std::endl;
 
     return 0;
 }
